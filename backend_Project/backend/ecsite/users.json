@@ -1,0 +1,15 @@
+[
+  {
+    "model": "ecsite.Users",
+    "pk": 1,
+    "fields": {
+      "first_name": "テスト",
+      "last_name": "てすと",
+      "phone": "09000000000",
+      "ship_number": "090-0000",
+      "address": "11111111",
+      "register_date": "2020-01-01",
+      "order_date": "2020-01-01"
+    }
+  }
+]

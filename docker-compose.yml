@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend_Project
+      dockerfile: docker/python/Dockerfile
+    volumes:
+      - ./backend_Project/backend:/backend
+    command: python3 /backend/manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    tty: true
+
+  frontend:
+    build:
+      context: ./frontend_Project
+      dockerfile: docker/node/Dockerfile
+    volumes:
+      - ./frontend_Project/node/frontend:/usr/src/app/frontend
+    command: sh -c "cd /usr/src/app/frontend && yarn start"
+    ports:
+      - "3000:3000"
+  
+  mysql:
+    build: 
+      context: ./db_Mysql
+      dockerfile: docker/db/Dockerfile
+    volumes:
+      - ./db_Mysql/db:/db
+    image: original_mysql_world
+    env_file: env/db_env
+    
